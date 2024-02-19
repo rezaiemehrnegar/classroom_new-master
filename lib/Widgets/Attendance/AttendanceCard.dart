@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 
 class AttendanceCard extends StatefulWidget {
@@ -27,19 +29,31 @@ class _AttendanceCardState extends State<AttendanceCard>
   void initState() {
     super.initState();
 
-    animationController =
-        AnimationController(duration: const Duration(seconds: 3), vsync: this);
-    animation = Tween(begin: -1.0, end: 0.0).animate(CurvedAnimation(
-        parent: animationController, curve: Curves.fastOutSlowIn));
-
-    delayedAnimation = Tween(begin: 1.0, end: 0.0).animate(CurvedAnimation(
+    animationController = AnimationController(
+      duration: const Duration(seconds: 3),
+      vsync: this,
+    );
+    animation = Tween(begin: -1.0, end: 0.0).animate(
+      CurvedAnimation(
         parent: animationController,
-        curve: const Interval(0.3, 0.7, curve: Curves.fastOutSlowIn)));
+        curve: Curves.fastOutSlowIn,
+      ),
+    );
+
+    delayedAnimation = Tween(begin: 1.0, end: 0.0).animate(
+      CurvedAnimation(
+        parent: animationController,
+        curve: const Interval(
+          0.3,
+          0.7,
+          curve: Curves.fastOutSlowIn,
+        ),
+      ),
+    );
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     animationController.dispose();
     super.dispose();
   }
@@ -88,9 +102,7 @@ class _AttendanceCardState extends State<AttendanceCard>
                           fontSize: 15,
                         ),
                       ),
-                      const SizedBox(
-                        height: 10,
-                      ),
+                      const SizedBox(height: 10),
                       // Text(
                       //   "${widget.endtime}",
                       //   style: TextStyle(
@@ -105,9 +117,7 @@ class _AttendanceCardState extends State<AttendanceCard>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [],
                   ),
-                  const SizedBox(
-                    width: 10,
-                  ),
+                  const SizedBox(width: 10),
                   Container(
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(

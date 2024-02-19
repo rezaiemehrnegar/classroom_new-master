@@ -1,41 +1,61 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
+// ignore_for_file: file_names, library_private_types_in_public_api, non_constant_identifier_names, prefer_typing_uninitialized_variables, prefer_interpolation_to_compose_strings
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserDetailCard extends StatefulWidget {
+  const UserDetailCard({super.key});
+
   @override
   _UserDetailCardState createState() => _UserDetailCardState();
 }
 
 class _UserDetailCardState extends State<UserDetailCard>
     with SingleTickerProviderStateMixin {
- late Animation animation, delayedAnimation, muchDelayedAnimation, LeftCurve;
- late AnimationController animationController;
+  late Animation animation, delayedAnimation, muchDelayedAnimation, LeftCurve;
+  late AnimationController animationController;
 
   @override
   void initState() {
     getData();
-    // TODO: implement initState
     super.initState();
 
-    animationController =
-        AnimationController(duration: Duration(seconds: 3), vsync: this);
-    animation = Tween(begin: -1.0, end: 0.0).animate(CurvedAnimation(
-        parent: animationController, curve: Curves.fastOutSlowIn));
-
-    delayedAnimation = Tween(begin: 1.0, end: 0.0).animate(CurvedAnimation(
+    animationController = AnimationController(
+      duration: const Duration(seconds: 3),
+      vsync: this,
+    );
+    animation = Tween(begin: -1.0, end: 0.0).animate(
+      CurvedAnimation(
         parent: animationController,
-        curve: Interval(0.2, 0.5, curve: Curves.fastOutSlowIn)));
+        curve: Curves.fastOutSlowIn,
+      ),
+    );
 
-    muchDelayedAnimation = Tween(begin: -1.0, end: 0.0).animate(CurvedAnimation(
+    delayedAnimation = Tween(begin: 1.0, end: 0.0).animate(
+      CurvedAnimation(
         parent: animationController,
-        curve: Interval(0.3, 0.5, curve: Curves.fastOutSlowIn)));
+        curve: const Interval(
+          0.2,
+          0.5,
+          curve: Curves.fastOutSlowIn,
+        ),
+      ),
+    );
+
+    muchDelayedAnimation = Tween(begin: -1.0, end: 0.0).animate(
+      CurvedAnimation(
+        parent: animationController,
+        curve: const Interval(
+          0.3,
+          0.5,
+          curve: Curves.fastOutSlowIn,
+        ),
+      ),
+    );
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     animationController.dispose();
     super.dispose();
   }
@@ -64,7 +84,7 @@ class _UserDetailCardState extends State<UserDetailCard>
         return Padding(
           padding: const EdgeInsets.fromLTRB(10.0, 5, 10, 3),
           child: Container(
-            alignment: Alignment(0, 0),
+            alignment: const Alignment(0, 0),
             child: Padding(
               padding: const EdgeInsets.only(top: 10.0, right: 0.0),
               child: Container(
@@ -85,7 +105,7 @@ class _UserDetailCardState extends State<UserDetailCard>
                           Transform(
                             transform: Matrix4.translationValues(
                                 muchDelayedAnimation.value * width, 0, 0),
-                            child: Center(
+                            child: const Center(
                                 // child: CircleAvatar(
                                 //   radius: 28,
                                 //   backgroundImage: AssetImage("assets/home.png"),
@@ -97,7 +117,7 @@ class _UserDetailCardState extends State<UserDetailCard>
                               builder: (context, snap) {
                                 if (snap.connectionState ==
                                     ConnectionState.waiting) {
-                                  return CircularProgressIndicator();
+                                  return const CircularProgressIndicator();
                                 } else {
                                   return Transform(
                                     transform: Matrix4.translationValues(
@@ -113,7 +133,7 @@ class _UserDetailCardState extends State<UserDetailCard>
                                             padding:
                                                 const EdgeInsets.only(top: 8.0),
                                             child: Container(
-                                              padding: EdgeInsets.all(5),
+                                              padding: const EdgeInsets.all(5),
                                               decoration: BoxDecoration(
                                                 color: Colors.orange[50],
                                                 borderRadius:
@@ -121,7 +141,7 @@ class _UserDetailCardState extends State<UserDetailCard>
                                               ),
                                               child: Text(
                                                 reg_no,
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 13,
                                                   color: Colors.deepOrange,
@@ -134,7 +154,7 @@ class _UserDetailCardState extends State<UserDetailCard>
                                                 top: 10.0),
                                             child: Text(
                                               name,
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 21,
                                                 color: Colors.white,
@@ -151,17 +171,15 @@ class _UserDetailCardState extends State<UserDetailCard>
                                               children: [
                                                 Text(
                                                   department,
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.white,
                                                   ),
                                                 ),
-                                                SizedBox(
-                                                  width: 50,
-                                                ),
+                                                const SizedBox(width: 50),
                                                 Text(
                                                   "Semester   " + sem,
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.white,
                                                   ),

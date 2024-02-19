@@ -1,10 +1,13 @@
+// ignore_for_file: file_names, library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 
 class OverallAttendanceCard extends StatefulWidget {
   final String date;
   final bool present;
 
-  const OverallAttendanceCard({super.key, required this.date, required this.present});
+  const OverallAttendanceCard(
+      {super.key, required this.date, required this.present});
 
   @override
   _OverallAttendanceCardState createState() => _OverallAttendanceCardState();
@@ -17,22 +20,33 @@ class _OverallAttendanceCardState extends State<OverallAttendanceCard>
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
-    animationController =
-        AnimationController(duration: const Duration(seconds: 3), vsync: this);
-    animation = Tween(begin: -1.0, end: 0.0).animate(CurvedAnimation(
-        parent: animationController, curve: Curves.fastOutSlowIn));
-
-    delayedAnimation = Tween(begin: 1.0, end: 0.0).animate(CurvedAnimation(
+    animationController = AnimationController(
+      duration: const Duration(seconds: 3),
+      vsync: this,
+    );
+    animation = Tween(begin: -1.0, end: 0.0).animate(
+      CurvedAnimation(
         parent: animationController,
-        curve: const Interval(0.2, 0.6, curve: Curves.fastOutSlowIn)));
+        curve: Curves.fastOutSlowIn,
+      ),
+    );
+
+    delayedAnimation = Tween(begin: 1.0, end: 0.0).animate(
+      CurvedAnimation(
+        parent: animationController,
+        curve: const Interval(
+          0.2,
+          0.6,
+          curve: Curves.fastOutSlowIn,
+        ),
+      ),
+    );
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     animationController.dispose();
     super.dispose();
   }
@@ -81,17 +95,13 @@ class _OverallAttendanceCardState extends State<OverallAttendanceCard>
                           fontSize: 15,
                         ),
                       ),
-                      const SizedBox(
-                        height: 10,
-                      ),
+                      const SizedBox(height: 10),
                     ],
                   ),
                   const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
-                        height: 10,
-                      ),
+                      SizedBox(height: 10),
                     ],
                   ),
                   Container(
@@ -129,4 +139,3 @@ class _OverallAttendanceCardState extends State<OverallAttendanceCard>
     );
   }
 }
-

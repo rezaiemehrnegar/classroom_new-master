@@ -1,50 +1,63 @@
-import 'dart:convert';
+// ignore_for_file: library_private_types_in_public_api, avoid_print, non_ant_identifier_names, non_constant_identifier_names
 
-import 'package:dropdown_search/dropdown_search.dart';
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
-import 'package:randomizer/randomizer.dart';
 import 'package:school_management/Screens/Exam/constant.dart';
 import 'package:school_management/Screens/Exam/update_profile.dart';
-
-import 'package:school_management/Widgets/AppBar.dart';
-import 'package:school_management/Widgets/BouncingButton.dart';
-import 'package:school_management/Widgets/Exams/SubjectCard.dart';
-import 'package:school_management/Widgets/MainDrawer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Profile extends StatefulWidget {
+   const Profile({super.key});
+
   @override
   _ProfileState createState() => _ProfileState();
 }
 
 class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
-  Animation animation, delayedAnimation, muchDelayedAnimation, LeftCurve;
-  AnimationController animationController;
-  Randomizer randomcolor = Randomizer();
+  late Animation animation, delayedAnimation, muchDelayedAnimation, LeftCurve;
+  late AnimationController animationController;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     //SystemChrome.setEnabledSystemUIOverlays([]);
 
-    animationController =
-        AnimationController(duration: Duration(seconds: 3), vsync: this);
-    animation = Tween(begin: -1.0, end: 0.0).animate(CurvedAnimation(
-        parent: animationController, curve: Curves.fastOutSlowIn));
-
-    delayedAnimation = Tween(begin: 1.0, end: 0.0).animate(CurvedAnimation(
+    animationController = AnimationController(
+      duration:  const Duration(seconds: 3),
+      vsync: this,
+    );
+    animation = Tween(begin: -1.0, end: 0.0).animate(
+      CurvedAnimation(
         parent: animationController,
-        curve: Interval(0.2, 0.5, curve: Curves.fastOutSlowIn)));
+        curve: Curves.fastOutSlowIn,
+      ),
+    );
 
-    muchDelayedAnimation = Tween(begin: -1.0, end: 0.0).animate(CurvedAnimation(
+    delayedAnimation = Tween(begin: 1.0, end: 0.0).animate(
+      CurvedAnimation(
         parent: animationController,
-        curve: Interval(0.3, 0.5, curve: Curves.fastOutSlowIn)));
+        curve:  const Interval(
+          0.2,
+          0.5,
+          curve: Curves.fastOutSlowIn,
+        ),
+      ),
+    );
+
+    muchDelayedAnimation = Tween(begin: -1.0, end: 0.0).animate(
+      CurvedAnimation(
+        parent: animationController,
+        curve:  const Interval(
+          0.3,
+          0.5,
+          curve: Curves.fastOutSlowIn,
+        ),
+      ),
+    );
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     animationController.dispose();
     super.dispose();
   }
@@ -52,12 +65,15 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
   getData() async {
     final spref = await SharedPreferences.getInstance();
     print(spref.getString('reg_no').toString());
-    var url = Constants.x + "view_student.php";
+    var url = "${Constants.x}view_student.php";
     final response = await post(Uri.parse(url), body: {
       'reg': spref.getString('reg_no'),
       // 'reg_no': reg_no,
     });
-    spref.setString('department_id', jsonDecode(response.body)['department']);
+    spref.setString(
+      'department_id',
+      jsonDecode(response.body)['department'],
+    );
     print(response.body);
     return jsonDecode(response.body);
   }
@@ -65,17 +81,13 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     animationController.forward();
-    final double width = MediaQuery.of(context).size.width;
-    final double height = MediaQuery.of(context).size.height;
     return AnimatedBuilder(
         animation: animationController,
-        builder: (BuildContext context, Widget child) {
-          final GlobalKey<ScaffoldState> _scaffoldKey =
-              new GlobalKey<ScaffoldState>();
+        builder: (BuildContext context, Widget? child) {
           return Scaffold(
             appBar: AppBar(
-              title: Text('Profile'),
-              backgroundColor: Color.fromARGB(255, 108, 147, 237),
+              title:  const Text('Profile'),
+              backgroundColor:  const Color.fromARGB(255, 108, 147, 237),
               centerTitle: true,
             ), //AppBar
             body: Center(
@@ -84,55 +96,59 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                   future: getData(),
                   builder: (context, snap) {
                     if (snap.connectionState == ConnectionState.waiting) {
-                      return CircularProgressIndicator();
+                      return  const CircularProgressIndicator();
                     } else {
                       return Card(
                         elevation: 50,
                         shadowColor: Colors.black,
-                        color: Color.fromARGB(255, 220, 231, 252),
+                        color:  const Color.fromARGB(255, 220, 231, 252),
                         child: SizedBox(
                           width: 300,
                           height: 500,
                           child: Padding(
-                            padding: const EdgeInsets.all(20.0),
+                            padding:  const EdgeInsets.all(20.0),
                             child: Column(
                               children: [
-                                Card(
-                                  child: ListTile(
+                                const Card(
+                                  child:  ListTile(
                                     title: Text('Register No :'),
-                                    trailing: Text(snap.data['reg_no']),
+                                    trailing: Text('reg_no'),
                                   ),
                                 ),
-                                Divider(),
-                                ListTile(
+                                 const Divider(),
+                                 const ListTile(
                                   title: Text(' Name :'),
-                                  trailing: Text(snap.data['name']),
+                                  trailing: Text('name'),
                                 ),
-                                Divider(),
-                                ListTile(
+                                 const Divider(),
+                                 const ListTile(
                                   title: Text(' Email :'),
-                                  trailing: Text(snap.data['email']),
+                                  trailing: Text('email'),
                                 ),
-                                Divider(),
+                                 const Divider(),
                                 // ListTile(
                                 //   title: Text('Department :'),
-                                //   trailing: Text(snap.data['department']),
+                                //   trailing: Text(snap.data['department'],),
                                 // ),
                                 // Divider(),
-                                ListTile(
+                                 const ListTile(
                                   title: Text('Mobile No :'),
-                                  trailing: Text(snap.data['mobile']),
+                                  trailing: Text(
+                                    'mobile',
+                                  ),
                                 ),
-                                Divider(),
-                                SizedBox(height: 40),
+                                 const Divider(),
+                                 const SizedBox(height: 40),
                                 FloatingActionButton(
                                   onPressed: () {
-                                    Navigator.push(context,
-                                        MaterialPageRoute(builder: (context) {
-                                      return Update();
-                                    }));
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) {
+                                        return Update();
+                                      }),
+                                    );
                                   },
-                                  child: Icon(Icons.edit),
+                                  child:  const Icon(Icons.edit),
                                 )
                               ],
                             ), //Column
