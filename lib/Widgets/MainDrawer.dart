@@ -141,7 +141,7 @@ class _MainDrawerState extends State<MainDrawer> {
                 context,
                 MaterialPageRoute(
                   builder: (BuildContext context) =>
-                      const MyHomePage(title: ''),
+                      const MyHomePage(),
                 ),
               );
             }),
