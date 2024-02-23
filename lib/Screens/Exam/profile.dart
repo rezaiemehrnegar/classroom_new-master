@@ -8,7 +8,7 @@ import 'package:school_management/Screens/Exam/update_profile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Profile extends StatefulWidget {
-   const Profile({super.key});
+  const Profile({super.key});
 
   @override
   _ProfileState createState() => _ProfileState();
@@ -23,7 +23,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
     //SystemChrome.setEnabledSystemUIOverlays([]);
 
     animationController = AnimationController(
-      duration:  const Duration(seconds: 3),
+      duration: const Duration(seconds: 3),
       vsync: this,
     );
     animation = Tween(begin: -1.0, end: 0.0).animate(
@@ -36,7 +36,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
     delayedAnimation = Tween(begin: 1.0, end: 0.0).animate(
       CurvedAnimation(
         parent: animationController,
-        curve:  const Interval(
+        curve: const Interval(
           0.2,
           0.5,
           curve: Curves.fastOutSlowIn,
@@ -47,7 +47,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
     muchDelayedAnimation = Tween(begin: -1.0, end: 0.0).animate(
       CurvedAnimation(
         parent: animationController,
-        curve:  const Interval(
+        curve: const Interval(
           0.3,
           0.5,
           curve: Curves.fastOutSlowIn,
@@ -86,8 +86,8 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
         builder: (BuildContext context, Widget? child) {
           return Scaffold(
             appBar: AppBar(
-              title:  const Text('Profile'),
-              backgroundColor:  const Color.fromARGB(255, 108, 147, 237),
+              title: const Text('Profile'),
+              backgroundColor: const Color.fromARGB(255, 108, 147, 237),
               centerTitle: true,
             ), //AppBar
             body: Center(
@@ -96,49 +96,49 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                   future: getData(),
                   builder: (context, snap) {
                     if (snap.connectionState == ConnectionState.waiting) {
-                      return  const CircularProgressIndicator();
+                      return const CircularProgressIndicator();
                     } else {
                       return Card(
                         elevation: 50,
                         shadowColor: Colors.black,
-                        color:  const Color.fromARGB(255, 220, 231, 252),
+                        color: const Color.fromARGB(255, 220, 231, 252),
                         child: SizedBox(
                           width: 300,
                           height: 500,
                           child: Padding(
-                            padding:  const EdgeInsets.all(20.0),
+                            padding: const EdgeInsets.all(20.0),
                             child: Column(
                               children: [
                                 const Card(
-                                  child:  ListTile(
+                                  child: ListTile(
                                     title: Text('Register No :'),
                                     trailing: Text('reg_no'),
                                   ),
                                 ),
-                                 const Divider(),
-                                 const ListTile(
+                                const Divider(),
+                                const ListTile(
                                   title: Text(' Name :'),
                                   trailing: Text('name'),
                                 ),
-                                 const Divider(),
-                                 const ListTile(
+                                const Divider(),
+                                const ListTile(
                                   title: Text(' Email :'),
                                   trailing: Text('email'),
                                 ),
-                                 const Divider(),
+                                const Divider(),
                                 // ListTile(
                                 //   title: Text('Department :'),
                                 //   trailing: Text(snap.data['department'],),
                                 // ),
                                 // Divider(),
-                                 const ListTile(
+                                const ListTile(
                                   title: Text('Mobile No :'),
                                   trailing: Text(
                                     'mobile',
                                   ),
                                 ),
-                                 const Divider(),
-                                 const SizedBox(height: 40),
+                                const Divider(),
+                                const SizedBox(height: 40),
                                 FloatingActionButton(
                                   onPressed: () {
                                     Navigator.push(
@@ -148,7 +148,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                                       }),
                                     );
                                   },
-                                  child:  const Icon(Icons.edit),
+                                  child: const Icon(Icons.edit),
                                 )
                               ],
                             ), //Column

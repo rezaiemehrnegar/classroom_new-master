@@ -57,7 +57,9 @@ class _TimetableState extends State<Timetable> {
               builder: (context, snap) {
                 print('data: $data');
                 if (snap.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
                 } else {
                   const SizedBox(height: 20);
                 }
@@ -98,9 +100,7 @@ class _TimetableState extends State<Timetable> {
                           Text(
                             'Teacher : afternoon_teacher',
                           ),
-                          SizedBox(
-                            height: 10,
-                          ),
+                          SizedBox(height: 10),
                         ],
                       ),
                     ),

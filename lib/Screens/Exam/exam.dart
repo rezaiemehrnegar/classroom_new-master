@@ -51,7 +51,10 @@ class _ExamState extends State<Exam> {
   getStatus() async {
     final spref = await SharedPreferences.getInstance();
     print(spref.getString('reg_no').toString());
-    final res = await http.post(Uri.parse('${Constants.x}exam_status.php'),
+    final res = await http.post(
+        Uri.parse(
+          '${Constants.x}exam_status.php',
+        ),
         body: {'reg_no': spref.getString('reg_no')});
     print(jsonDecode(res.body));
     if ((jsonDecode(res.body))['message'] == 'attended') {
@@ -81,7 +84,9 @@ class _ExamState extends State<Exam> {
           } else {
             print('att $alreadyAttended');
             return Scaffold(
-              appBar: AppBar(title: const Text('Exam')),
+              appBar: AppBar(
+                title: const Text('Exam'),
+              ),
               body: Column(
                 children: [
                   Expanded(

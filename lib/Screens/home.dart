@@ -178,11 +178,12 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                           child: Bouncing(
                             onPress: () {
                               Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (BuildContext context) =>
-                                        const Profile(),
-                                  ));
+                                context,
+                                MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      const Profile(),
+                                ),
+                              );
                             },
                             child: const DashboardCard(
                               name: "Profile",
@@ -229,11 +230,12 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                           child: Bouncing(
                             onPress: () {
                               Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (BuildContext context) =>
-                                        const Timetable(),
-                                  ));
+                                context,
+                                MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      const Timetable(),
+                                ),
+                              );
                             },
                             child: const DashboardCard(
                               name: "TimeTable",

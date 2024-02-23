@@ -140,8 +140,7 @@ class _MainDrawerState extends State<MainDrawer> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (BuildContext context) =>
-                      const MyHomePage(),
+                  builder: (BuildContext context) => const MyHomePage(),
                 ),
               );
             }),

@@ -56,12 +56,14 @@ class Materials extends StatelessWidget {
                           //     (snap.data as dynamic)[index]['file_path'],
                           //     'name');
 
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (conext) {
-                            return ImageViewScreen(
-                              (snap.data as dynamic)[index]['file_path'],
-                            );
-                          }));
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (conext) {
+                              return ImageViewScreen(
+                                (snap.data as dynamic)[index]['file_path'],
+                              );
+                            }),
+                          );
                           // Navigator.push(context,
                           //     MaterialPageRoute(builder: (conext) {
                           //   return PDFViewPage(

@@ -56,7 +56,9 @@ class _NotificationsState extends State<Notifications> {
               builder: (context, snap) {
                 print('data: $data');
                 if (snap.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
                 } else {
                   const SizedBox(height: 20.0);
                 }

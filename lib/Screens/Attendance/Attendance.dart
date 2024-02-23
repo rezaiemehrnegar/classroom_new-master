@@ -17,8 +17,7 @@ class _AttendanceState extends State<Attendance>
     with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<ScaffoldState> scaffoldKey =
-        GlobalKey<ScaffoldState>();
+    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
       key: scaffoldKey,
       appBar: CommonAppBar(

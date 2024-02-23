@@ -17,7 +17,9 @@ class Meetings extends StatelessWidget {
     final spref = await SharedPreferences.getInstance();
     final res = await http.post(
       Uri.parse('${Constants.x}view_online_class.php'),
-      body: {'department_id': spref.getString('department_id')},
+      body: {
+        'department_id': spref.getString('department_id'),
+      },
     );
     print(res.body);
     return jsonDecode(res.body);

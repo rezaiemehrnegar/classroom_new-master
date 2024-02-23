@@ -36,7 +36,8 @@ class ProcessingRequest extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (BuildContext context) => const MyHomePage(),
+                            builder: (BuildContext context) =>
+                                const MyHomePage(),
                           ),
                         );
                       },
