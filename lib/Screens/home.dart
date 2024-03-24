@@ -52,7 +52,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     });
     super.initState();
 
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+    SystemChrome.setEnabledSystemUIMode(
+      SystemUiMode.manual,
+      overlays: [],
+    );
     animationController = AnimationController(
       duration: const Duration(seconds: 3),
       vsync: this,
@@ -156,7 +159,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                       children: [
                         Transform(
                           transform: Matrix4.translationValues(
-                              muchDelayedAnimation.value * width, 0, 0),
+                            muchDelayedAnimation.value * width,
+                            0,
+                            0,
+                          ),
                           child: Bouncing(
                             onPress: () {
                               Navigator.push(
@@ -174,7 +180,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                         ),
                         Transform(
                           transform: Matrix4.translationValues(
-                              delayedAnimation.value * width, 0, 0),
+                            delayedAnimation.value * width,
+                            0,
+                            0,
+                          ),
                           child: Bouncing(
                             onPress: () {
                               Navigator.push(
@@ -207,7 +216,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                       children: [
                         Transform(
                           transform: Matrix4.translationValues(
-                              muchDelayedAnimation.value * width, 0, 0),
+                            muchDelayedAnimation.value * width,
+                            0,
+                            0,
+                          ),
                           child: Bouncing(
                             onPress: () {
                               Navigator.push(
@@ -226,7 +238,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                         ),
                         Transform(
                           transform: Matrix4.translationValues(
-                              delayedAnimation.value * width, 0, 0),
+                            delayedAnimation.value * width,
+                            0,
+                            0,
+                          ),
                           child: Bouncing(
                             onPress: () {
                               Navigator.push(

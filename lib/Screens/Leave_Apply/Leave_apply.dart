@@ -148,9 +148,7 @@ class _LeaveApplyState extends State<LeaveApply>
             key: _formkey,
             child: SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 15.0,
-                ),
+                padding: const EdgeInsets.symmetric(horizontal: 15.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -158,9 +156,7 @@ class _LeaveApplyState extends State<LeaveApply>
                     //   color: Colors.black.withOpacity(0.5),
                     //   height: 1,
                     // ),
-                    SizedBox(
-                      height: height * 0.05,
-                    ),
+                    SizedBox(height: height * 0.05),
 
                     SizedBox(
                       height: height * 0.03,
@@ -267,9 +263,7 @@ class _LeaveApplyState extends State<LeaveApply>
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 7,
-                    ),
+                    const SizedBox(height: 7),
                     Transform(
                       transform: Matrix4.translationValues(
                         muchDelayedAnimation.value * width,

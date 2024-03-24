@@ -82,7 +82,10 @@ class _ForgetPasswordState extends State<ForgetPassword>
                 padding: const EdgeInsets.only(top: 20.0),
                 child: Transform(
                   transform: Matrix4.translationValues(
-                      animation.value * width, 0.0, 0.0),
+                    animation.value * width,
+                    0.0,
+                    0.0,
+                  ),
                   child: Center(
                     child: Stack(
                       children: <Widget>[
@@ -209,7 +212,10 @@ class _ForgetPasswordState extends State<ForgetPassword>
                 padding: const EdgeInsets.fromLTRB(20.0, 5, 20.0, 5),
                 child: Transform(
                   transform: Matrix4.translationValues(
-                      muchDelayedAnimation.value * width, 0, 0),
+                    muchDelayedAnimation.value * width,
+                    0,
+                    0,
+                  ),
                   child: Column(
                     children: <Widget>[
                       Bouncing(
